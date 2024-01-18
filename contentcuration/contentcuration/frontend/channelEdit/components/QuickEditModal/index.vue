@@ -16,6 +16,11 @@
       :nodeIds="nodeIds"
       @close="close"
     />
+    <EditCompletionModal
+      v-if="isCompletionOpen"
+      :nodeId="nodeIds[0]"
+      @close="close"
+    />
   </div>
 
 </template>
@@ -26,6 +31,7 @@
   import { mapGetters, mapMutations } from 'vuex';
   import { QuickEditModals } from '../../constants';
   import EditLanguageModal from './EditLanguageModal';
+  import EditCompletionModal from './EditCompletionModal';
   import EditResourcesNeededModal from './EditResourcesNeededModal';
   import EditTitleDescriptionModal from './EditTitleDescriptionModal';
 
@@ -33,6 +39,7 @@
     name: 'QuickEditModal',
     components: {
       EditLanguageModal,
+      EditCompletionModal,
       EditResourcesNeededModal,
       EditTitleDescriptionModal,
     },
@@ -60,6 +67,9 @@
       },
       isResourcesNeededOpen() {
         return this.openedModal === QuickEditModals.WHAT_IS_NEEDED;
+      },
+      isCompletionOpen() {
+        return this.openedModal === QuickEditModals.COMPLETION;
       },
     },
     methods: {
