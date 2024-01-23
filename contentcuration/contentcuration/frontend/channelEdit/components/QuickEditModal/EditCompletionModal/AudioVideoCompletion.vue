@@ -1,27 +1,36 @@
 <template>
   <div>
-    
+    <Divider/>
+    <DurationInput
+      required
+    />
   </div>
 </template>
 
 <script>
 
-export default {
-  name: 'EditCompletionModal',
-  props: {
-    nodeId: {
-      type: String,
-      required: true,
+  import DurationInput from './inputs/DurationInput';
+  import Divider from 'shared/views/Divider';
+
+  export default {
+    name: 'EditCompletionModal',
+    props: {
+      nodeId: {
+        type: String,
+        required: true,
+      },
     },
-  },
-  data() {
-    return {
-    }
-  },
-  methods: {
-    
-  },
-}
+    components: {
+      DurationInput,
+    },
+    data() {
+      return {
+      }
+    },
+    methods: {
+      
+    },
+  }
 
 </script>
 

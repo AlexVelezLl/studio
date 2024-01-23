@@ -120,6 +120,7 @@ import Base from 'shared/Base.vue';
 import urls from 'shared/urls';
 import ActionLink from 'shared/views/ActionLink';
 import Menu from 'shared/views/Menu';
+import Divider from 'shared/views/Divider';
 import { initializeDB, resetDB } from 'shared/data';
 import { Session, injectVuexStore } from 'shared/data/resources';
 
@@ -256,6 +257,7 @@ Vue.use(AnalyticsPlugin, { dataLayer: window.dataLayer });
 // Register global components
 Vue.component('ActionLink', ActionLink);
 Vue.component('Menu', Menu);
+Vue.component('Divider', Divider);
 
 function initiateServiceWorker() {
   // Second conditional must be removed if you are doing dev work on the service

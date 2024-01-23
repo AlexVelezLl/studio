@@ -33,6 +33,7 @@
     [ContentKindsNames.VIDEO]: AudioVideoCompletion,
     [ContentKindsNames.EXERCISE]: ExerciseCompletion,
     [ContentKindsNames.DOCUMENT]: DocumentCompletion,
+    [ContentKindsNames.SLIDESHOW]: DocumentCompletion,
   };
   export default {
     name: 'EditCompletionModal',
