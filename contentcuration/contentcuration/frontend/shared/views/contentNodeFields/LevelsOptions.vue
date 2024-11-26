@@ -7,7 +7,7 @@
     :options="levels"
     :hideLabel="hideLabel"
     :label="translateMetadataString('level')"
-    :availableItems="nodeIds"
+    :availableItems="nodeIds" 
   />
 
 </template>
