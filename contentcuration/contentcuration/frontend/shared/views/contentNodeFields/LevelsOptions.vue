@@ -20,9 +20,9 @@
   import { constantsTranslationMixin, metadataTranslationMixin } from 'shared/mixins';
 
   export default {
-    name: 'LevelsOptions',
+    name: "LevelsOptions",
     components: { ExpandableSelect },
-    mixins: [constantsTranslationMixin, metadataTranslationMixin],
+    mixins: [constantsTranslationMixin, metadataTranslationMixin ],
     props: {
       /**
        * This prop receives an object with the following structure:
