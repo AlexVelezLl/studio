@@ -38,7 +38,7 @@
     props: {
       nodeIds: {
         type: Array,
-        required: true,
+        required: true ,
       },
       resourcesSelectedText: {
         type: String ,
