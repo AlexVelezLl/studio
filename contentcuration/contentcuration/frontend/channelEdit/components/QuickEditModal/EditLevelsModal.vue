@@ -42,7 +42,7 @@
       },
       resourcesSelectedText: {
         type: String,
-        default: '',
+        default: '' ,
       },
     },
     computed: {
