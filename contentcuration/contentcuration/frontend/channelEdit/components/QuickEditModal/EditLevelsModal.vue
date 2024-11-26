@@ -30,19 +30,19 @@
   import commonStrings from 'shared/translator';
 
   export default {
-    name: 'EditLevelsModal' ,
+    name: 'EditLevelsModal',
     components: {
-      LevelsOptions ,
+      LevelsOptions,
       EditBooleanMapModal,
     },
     props: {
       nodeIds: {
         type: Array,
-        required: true ,
+        required: true,
       },
       resourcesSelectedText: {
-        type: String ,
-        default: '' ,
+        type: String,
+        default: '',
       },
     },
     computed: {
