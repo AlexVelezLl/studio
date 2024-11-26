@@ -43,6 +43,8 @@ jobs:
       run: |
         yarn --frozen-lockfile
         npm rebuild node-sass
+    - name: Run tests
+      run: yarn run lint-frontend:format
     - name: Run pre-commit-ci-lite
       uses: pre-commit-ci/lite-action@v1.1.0
       if: always()
