@@ -33,7 +33,7 @@
     name: 'EditLevelsModal',
     components: {
       LevelsOptions,
-      EditBooleanMapModal ,
+      EditBooleanMapModal,
     },
     props: {
       nodeIds: {
