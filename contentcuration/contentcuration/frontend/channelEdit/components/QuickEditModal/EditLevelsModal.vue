@@ -32,7 +32,7 @@
   export default {
     name: 'EditLevelsModal' ,
     components: {
-      LevelsOptions,
+      LevelsOptions ,
       EditBooleanMapModal,
     },
     props: {
