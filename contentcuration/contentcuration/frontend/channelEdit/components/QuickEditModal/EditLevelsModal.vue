@@ -41,7 +41,7 @@
         required: true,
       },
       resourcesSelectedText: {
-        type: String,
+        type: String ,
         default: '' ,
       },
     },
