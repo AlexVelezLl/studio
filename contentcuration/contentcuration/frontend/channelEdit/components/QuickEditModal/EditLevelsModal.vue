@@ -30,7 +30,7 @@
   import commonStrings from 'shared/translator';
 
   export default {
-    name: 'EditLevelsModal',
+    name: 'EditLevelsModal' ,
     components: {
       LevelsOptions,
       EditBooleanMapModal,
