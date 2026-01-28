@@ -261,6 +261,7 @@
   import CountryField from 'shared/views/form/CountryField';
   import LanguagesMap from 'shared/leUtils/Languages';
   import { CategoriesLookup, CommunityLibraryStatus } from 'shared/constants';
+  import { getUiSubmissionStatus } from 'shared/utils/communityLibrary';
 
   export default {
     name: 'SubmitToCommunityLibrarySidePanel',
@@ -352,13 +353,7 @@
         if (!latestSubmissionIsFinished.value) return undefined;
         if (!latestSubmissionData.value) return null;
 
-        // We do not need to distinguish LIVE from APPROVED in the UI
-        const uiSubmissionStatus =
-          latestSubmissionData.value.status == CommunityLibraryStatus.LIVE
-            ? CommunityLibraryStatus.APPROVED
-            : latestSubmissionData.value.status;
-
-        return uiSubmissionStatus;
+        return getUiSubmissionStatus(latestSubmissionData.value.status);
       });
 
       const infoConfig = computed(() => {
@@ -578,6 +573,7 @@
         displayedVersion,
         channelVersionId,
         canBeSubmitted,
+        versionDetail,
         versionDetailIsLoading,
         versionDetailIsFinished,
         detectedLanguages,
