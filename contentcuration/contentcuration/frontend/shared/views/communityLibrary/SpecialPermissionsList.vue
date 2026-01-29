@@ -6,7 +6,9 @@
         {{ specialPermissionsDetected$() }}
       </div>
       <div class="description">
-        {{ confirmDistributionRights$() }}
+        <slot name="description">
+          {{ confirmDistributionRights$() }}
+        </slot>
       </div>
     </div>
 
@@ -25,6 +27,7 @@
           :checked="value.includes(permission.id)"
           :label="permission.description"
           class="permission-checkbox"
+          :disabled="disabled"
           @change="togglePermission(permission.id)"
         />
       </div>
@@ -64,7 +67,7 @@
 <script>
 
   import { computed, watch } from 'vue';
-  import { useSpecialPermissions } from '../composables/useSpecialPermissions';
+  import { useSpecialPermissions } from 'shared/composables/useSpecialPermissions';
   import { communityChannelsStrings } from 'shared/strings/communityChannelsStrings';
 
   export default {
@@ -138,6 +141,11 @@
         required: false,
         default: () => [],
       },
+      disabled: {
+        type: Boolean,
+        required: false,
+        default: false,
+      },
     },
     emits: ['input', 'update:allChecked'],
   };
@@ -173,8 +181,8 @@
   }
 
   .permission-checkbox {
-    margin: 0;
-    font-size: 14px;
+    margin: 0 !important;
+    font-size: 14px !important;
   }
 
   .pagination {
