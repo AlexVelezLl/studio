@@ -1,15 +1,6 @@
 <template>
 
   <div data-test="special-permissions-list">
-    <div class="header-section">
-      <div class="header-title">
-        {{ specialPermissionsDetected$() }}
-      </div>
-      <div class="description">
-        {{ confirmDistributionRights$() }}
-      </div>
-    </div>
-
     <div
       v-if="isLoading"
       class="loader-wrapper"
@@ -18,6 +9,16 @@
     </div>
 
     <template v-else-if="currentPagePermissions.length > 0">
+      <div class="header-section">
+        <div class="header-title">
+          {{ specialPermissionsDetected$() }}
+        </div>
+        <div class="description">
+          <slot name="description">
+            {{ confirmDistributionRights$() }}
+          </slot>
+        </div>
+      </div>
       <div class="permissions-box">
         <KCheckbox
           v-for="permission in currentPagePermissions"
@@ -25,6 +26,7 @@
           :checked="value.includes(permission.id)"
           :label="permission.description"
           class="permission-checkbox"
+          :disabled="disabled"
           @change="togglePermission(permission.id)"
         />
       </div>
@@ -64,7 +66,7 @@
 <script>
 
   import { computed, watch } from 'vue';
-  import { useSpecialPermissions } from '../composables/useSpecialPermissions';
+  import { useSpecialPermissions } from 'shared/composables/useSpecialPermissions';
   import { communityChannelsStrings } from 'shared/strings/communityChannelsStrings';
 
   export default {
@@ -101,16 +103,13 @@
       }
 
       const allChecked = computed(() => {
+        if (isLoading.value) return false;
         return permissions.value.every(p => props.value.includes(p.id));
       });
 
-      watch(
-        allChecked,
-        val => {
-          emit('update:allChecked', val);
-        },
-        { immediate: true },
-      );
+      watch(allChecked, val => {
+        emit('update:allChecked', val);
+      });
 
       return {
         currentPagePermissions,
@@ -137,6 +136,11 @@
         type: Array,
         required: false,
         default: () => [],
+      },
+      disabled: {
+        type: Boolean,
+        required: false,
+        default: false,
       },
     },
     emits: ['input', 'update:allChecked'],
@@ -173,8 +177,8 @@
   }
 
   .permission-checkbox {
-    margin: 0;
-    font-size: 14px;
+    margin: 0 !important;
+    font-size: 14px !important;
   }
 
   .pagination {
